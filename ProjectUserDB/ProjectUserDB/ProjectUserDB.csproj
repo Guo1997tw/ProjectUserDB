@@ -175,6 +175,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\MVC_UserDB\UserTableList.cshtml" />
     <Content Include="Views\MVC_UserDB\UserTableDetails.cshtml" />
+    <Content Include="Views\MVC_UserDB\UserTableCreate.cshtml" />
+    <Content Include="Views\MVC_UserDB\UserTableEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

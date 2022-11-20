@@ -14,7 +14,7 @@
 </head>
 <body>
     <p>
-        @Html.ActionLink("新增", "Create")
+        @Html.ActionLink("新增", "UserTableCreate")
     </p>
     @*border為表格框線引用*@
     <table class="table" border="1">
@@ -58,7 +58,7 @@
                 </td>*@
 
                 <td>
-                    @Html.ActionLink("編輯", "Edit", new { _ID = item.UserId }) |
+                    @Html.ActionLink("編輯", "UserTableEdit", new { _ID = item.UserId }) |
                     @Html.ActionLink("明細", "UserTableDetails", new { _ID = item.UserId }) |
                     @Html.ActionLink("刪除", "Delete", new { _ID = item.UserId })
                 </td>
