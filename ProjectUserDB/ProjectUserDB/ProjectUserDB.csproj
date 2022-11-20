@@ -177,6 +177,7 @@
     <Content Include="Views\MVC_UserDB\UserTableDetails.cshtml" />
     <Content Include="Views\MVC_UserDB\UserTableCreate.cshtml" />
     <Content Include="Views\MVC_UserDB\UserTableEdit.cshtml" />
+    <Content Include="Views\MVC_UserDB\UserTableDelete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -23,6 +23,8 @@ namespace ProjectUserDB.Controllers
             if (disposing) { _MUDBC.Dispose(); }
             base.Dispose(disposing);
         }
+
+        /*主表清單*/
         public ActionResult UserTableList()
         {
             IQueryable<UserTable> UserTableListAll = from _UserTable in _MUDBC.UserTables select _UserTable;
@@ -31,6 +33,8 @@ namespace ProjectUserDB.Controllers
             else { return View(UserTableListAll); }
         }
         [HttpGet]
+        
+        /*資料明細*/
         public ActionResult UserTableDetails(int? _ID)
         {
             if (_ID == null) { return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest); }
@@ -42,6 +46,8 @@ namespace ProjectUserDB.Controllers
             if (UserTableDetailsOne == null) { return HttpNotFound(); }
             else { return View(UserTableDetailsOne.FirstOrDefault()); }
         }
+        
+        /*新增*/
         public ActionResult UserTableCreate()
         {
             return View();
@@ -60,6 +66,8 @@ namespace ProjectUserDB.Controllers
 
             return Content("欄位有誤！請返回上一頁並重新填寫。");
         }
+
+        /*修改*/
         public ActionResult UserTableEdit(int? _ID)
         {
             if (_ID == null) { return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest); }
@@ -84,6 +92,35 @@ namespace ProjectUserDB.Controllers
             }
 
             return Content("欄位有誤！請返回上一頁並重新填寫。");
+        }
+
+        /*刪除*/
+        public ActionResult UserTableDelete(int? _ID)
+        {
+            if (_ID == null) { return new HttpStatusCodeResult(System.Net.HttpStatusCode.BadRequest); }
+            
+            UserTable _UT = _MUDBC.UserTables.Find(_ID);
+
+            if(_UT == null) { return HttpNotFound(); }
+            else { return View(_UT); }
+        }
+        [HttpPost, ActionName("UserTableDelete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult UserTableDeleteConfirm(int? _ID)
+        {
+            if(ModelState.IsValid)
+            {
+                UserTable _UT = _MUDBC.UserTables.Find(_ID);
+                _MUDBC.UserTables.Remove(_UT);
+                _MUDBC.SaveChanges();
+
+                return RedirectToAction("UserTableList");
+            }
+            else
+            {
+                ModelState.AddModelError("Value1", "錯誤訊息");
+                return View();
+            }
         }
     }
 }

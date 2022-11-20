@@ -60,7 +60,7 @@
                 <td>
                     @Html.ActionLink("編輯", "UserTableEdit", new { _ID = item.UserId }) |
                     @Html.ActionLink("明細", "UserTableDetails", new { _ID = item.UserId }) |
-                    @Html.ActionLink("刪除", "Delete", new { _ID = item.UserId })
+                    @Html.ActionLink("刪除", "UserTableDelete", new { _ID = item.UserId })
                 </td>
             </tr>
         }
